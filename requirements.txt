@@ -1,0 +1,11 @@
+google-cloud-bigquery
+pandas
+numpy
+scikit-learn
+xgboost
+wandb
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+joblib

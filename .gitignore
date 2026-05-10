@@ -1,0 +1,24 @@
+# Credentials & Secrets (CRITICAL)
+credentials.json
+.env
+*.pem
+
+# Python environment & cache
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Weights & Biases 
+wandb/
+
+# Local model files (Optional)
+# If your model is >50MB, don't push it to GitHub; 
+# otherwise, keep it so Render can find it.
+# models/*.pkl
+
+# Operating system files
+.DS_Store
+Thumbs.db
