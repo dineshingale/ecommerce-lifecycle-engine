@@ -3,11 +3,14 @@ from wandb.integration.xgboost import WandbCallback
 from sklearn.model_selection import train_test_split
 from src.pipeline import get_model_pipeline
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 def train_model(X, y):
 
-    # ADD THESE TWO LINES HERE
-    import os
-    os.environ["WANDB_API_KEY"] = "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"
 
     # Initialize W&B run
     run = wandb.init(project="ecommerce-churn", job_type="train")

@@ -6,7 +6,9 @@ from wandb.integration.xgboost import WandbCallback
 
 def get_model_pipeline():
     pipeline = Pipeline([
-        # Imputation and scaling fitted ONLY on train data — prevents leakage
+
+        # fit Imputation and scaling only on train data — to prevents leakage
+
         ('imputer', SimpleImputer(strategy='median')),
         ('scaler', StandardScaler()),
         ('classifier', XGBClassifier(
@@ -16,4 +18,5 @@ def get_model_pipeline():
             callbacks=[WandbCallback()]
         ))
     ])
+    
     return pipeline

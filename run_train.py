@@ -1,18 +1,24 @@
 import os
+import json
 import joblib
 import pandas as pd
 from src.database import BigQueryHandler
 from src.engineering import engineer_features
 from src.train import train_model
 
-# REQUIRED: Path to your Google Cloud credentials
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "credentials.json"
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def run_pipeline():
     # 1. Fetch Data
     print("--- Step 1: Fetching Data from BigQuery ---")
-    # Replace 'your-project-id' with your actual GCP Project ID
-    db = BigQueryHandler(project_id="gen-lang-client-0449936299") 
+    
+    # Load project_id from credentials.json
+    with open("credentials.json", "r") as f:
+        credentials = json.load(f)
+    
+    db = BigQueryHandler(project_id=credentials["project_id"]) 
     df = db.get_training_data()
     
     # 2. Engineering
